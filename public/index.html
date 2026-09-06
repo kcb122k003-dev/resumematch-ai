@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ResumeMatch AI | ATS Optimizer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top-nav">
+    <div class="brand">
+      <span class="brand-title">ResumeMatch AI</span>
+      <span class="badge">ATS Edition</span>
+    </div>
+    <div class="auth-bar">
+      <input type="text" id="license-input" placeholder="Enter Whop License Key" autocomplete="off">
+      <button id="verify-btn" class="btn secondary">Save Key</button>
+      <span id="license-status" class="status-pill unverified">Unverified</span>
+      <a href="https://whop.com" target="_blank" class="buy-link">Get License</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="controls-bar">
+      <p class="tagline">Optimize your resume and cover letter against targeted job postings.</p>
+      <button id="load-sample-btn" class="btn subtle">Load Sample Data</button>
+    </section>
+
+    <form id="optimizer-form" class="form-grid">
+      <div class="form-group full-width">
+        <label for="target-role">Target Role (e.g., Software Engineering Intern, Financial Analyst)</label>
+        <input type="text" id="target-role" placeholder="Target Role" required>
+      </div>
+
+      <div class="form-group">
+        <label for="resume-text">Paste Your Resume</label>
+        <textarea id="resume-text" rows="12" placeholder="Paste full resume text here..." required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="job-description">Paste Job Description</label>
+        <textarea id="job-description" rows="12" placeholder="Paste full job description here..." required></textarea>
+      </div>
+
+      <div class="form-actions full-width">
+        <button type="submit" id="submit-btn" class="btn primary">Run ATS Optimization</button>
+      </div>
+    </form>
+
+    <div id="loader" class="loader-box hidden">
+      <div class="spinner"></div>
+      <p id="loader-message">Auditing resume against job criteria...</p>
+    </div>
+
+    <div id="error-box" class="error-banner hidden"></div>
+
+    <section id="results-panel" class="results-panel hidden">
+      <div class="metric-card">
+        <div class="score-display">
+          <div class="score-circle">
+            <span id="score-val">0</span>
+            <small>/100</small>
+          </div>
+          <div class="score-meta">
+            <h3>ATS Match Score</h3>
+            <p id="assessment-text"></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="keywords-grid">
+        <div class="keyword-card">
+          <h4>Matched Skills & Terms</h4>
+          <div id="matched-keywords" class="pill-container"></div>
+        </div>
+        <div class="keyword-card">
+          <h4>Missing Critical Terms</h4>
+          <div id="missing-keywords" class="pill-container missing"></div>
+        </div>
+      </div>
+
+      <div class="results-section">
+        <div class="section-header">
+          <h3>Bullet Point Revisions (Google XYZ Formula)</h3>
+        </div>
+        <div id="bullets-list" class="bullets-container"></div>
+      </div>
+
+      <div class="results-section">
+        <div class="section-header">
+          <h3>Tailored Cover Letter</h3>
+          <button id="copy-cover-btn" class="btn small">Copy Letter</button>
+        </div>
+        <div class="card cover-letter-card">
+          <p id="cover-letter-text"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
